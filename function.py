@@ -1,11 +1,7 @@
 import requests
 import boto3
 import json
-
-# AWS S3 Configuration
-BUCKET_NAME = "unique-demo-bucket-12345"     # Replace with your unique bucket name
-AWS_REGION = "us-east-1"                     # Replace with your AWS region
-LOCAL_FILENAME = "index.html"                # Local file to save the cloned HTML
+from variable import *                
 
 # Step 1: Scrape the website and save HTML content
 def scraping_website():
@@ -93,10 +89,4 @@ def upload_to_s3_and_host(file_name, bucket_name, region):
     except Exception as e:
         print(f"An unexpected error occurred: {str(e)}")
 
-# Main function
-if __name__ == "__main__":
-    # Step 1: Scrape the website and save HTML
-    scraping_website()
 
-    # Step 2: Upload the cloned website to S3 and configure static hosting
-    upload_to_s3_and_host(LOCAL_FILENAME, BUCKET_NAME, AWS_REGION)
